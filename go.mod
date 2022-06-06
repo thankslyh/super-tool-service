@@ -1,4 +1,4 @@
-module super-tool
+module super-tool-service
 
 go 1.16
 

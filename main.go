@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"super-tool/getWxFollowUrl"
+	"super-tool-service/getWxFollowUrl"
 )
 
 func main()  {
@@ -15,5 +15,6 @@ func main()  {
 	})
 	route := r.Group("/api")
 	route.POST(getWxFollowUrl.Url, getWxFollowUrl.Entry)
+	route.POST(getWxFollowUrl.BatchUrl, getWxFollowUrl.BatchEntry)
 	r.Run(":4396")
 }
