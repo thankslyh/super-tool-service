@@ -1,7 +1,6 @@
 package getWxFollowUrl
 
 import (
-	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -82,7 +81,6 @@ func parseHtml(doc *goquery.Document, result chan UrlResult) {
 		result <- res
 		return
 	}
-	fmt.Println(attr)
 	uri, err := url.Parse(attr)
 	if err != nil {
 		res := UrlResult{

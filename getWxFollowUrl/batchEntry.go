@@ -1,7 +1,6 @@
 package getWxFollowUrl
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -32,7 +31,6 @@ func BatchEntry(c *gin.Context) {
 			break
 		}
 	}
-	fmt.Println("请求完成")
 	var data []string
 	for range urlsArr {
 		data = append(data, (<- urlResults).Data)
