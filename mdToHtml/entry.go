@@ -38,14 +38,14 @@ func Entry(ctx *gin.Context)  {
 		})
 		return
 	}
-	strHtml, _ := mdToHtml(content)
+	strHtml, _ := MdToHtml(content)
 	ctx.JSON(http.StatusOK, gin.H{
 		"code": http.StatusOK,
 		"data": strHtml,
 	})
 }
 
-func mdToHtml(bt []byte) (string, *goquery.Document) {
+func MdToHtml(bt []byte) (string, *goquery.Document) {
 	unsafe := blackfriday.Run(bt)
 	html := bluemonday.UGCPolicy().Sanitize(string(unsafe))
 	reader := bytes.NewReader([]byte(html))
