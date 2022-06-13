@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"super-tool-service/getWxFollowUrl"
 	"super-tool-service/mdToHtml"
+	"super-tool-service/sliceUpload"
 )
 
 func main()  {
@@ -18,5 +19,6 @@ func main()  {
 	route.POST(getWxFollowUrl.Url, getWxFollowUrl.Entry)
 	route.POST(getWxFollowUrl.BatchUrl, getWxFollowUrl.BatchEntry)
 	route.POST(mdToHtml.Url, mdToHtml.Entry)
+	route.POST(sliceUpload.Url, sliceUpload.Entry)
 	r.Run(":4396")
 }
