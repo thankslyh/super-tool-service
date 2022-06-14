@@ -39,3 +39,7 @@ func TestFileSlice(t *testing.T) {
 
 	log.Println(fs)
 }
+
+func TestCheckFile(t *testing.T) {
+	sliceUpload.CheckFile("6afc1f639f2685cc71af342f42f97be0", 100000)
+}

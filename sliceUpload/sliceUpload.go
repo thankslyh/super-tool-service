@@ -1,9 +1,16 @@
 package sliceUpload
 
+import (
+	"fmt"
+	"os"
+)
+
 type FileSlice struct {
 	Filename string `json:"filename"`
 	FileHash string `json:"fileHash"`
 	Index int `json:"index"`
+	Data []byte `json:"data"`
+	Size int
 }
 
 type fileSlices []FileSlice
@@ -24,10 +31,16 @@ func (f *fileSlices) Swap(i, j int)  {
 	(*f)[i], (*f)[j] = (*f)[j], (*f)[i]
 }
 
-func (f *fileSlices) MergeHash() string  {
-	var str string
+func (f *fileSlices) MergeChunk() error {
+	var data []byte
+	var filename string
 	for _, fs := range *f {
-		str += fs.FileHash
+		data = append(data, fs.Data...)
+		filename = fs.Filename
 	}
-	return str
+	fmt.Println(len(data))
+	fc, _ := os.Create(assetsPath + filename)
+	defer fc.Close()
+	_, err := fmt.Fprint(fc, string(data))
+	return err
 }

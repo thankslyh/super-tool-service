@@ -20,5 +20,6 @@ func main()  {
 	route.POST(getWxFollowUrl.BatchUrl, getWxFollowUrl.BatchEntry)
 	route.POST(mdToHtml.Url, mdToHtml.Entry)
 	route.POST(sliceUpload.Url, sliceUpload.Entry)
+	route.POST(sliceUpload.MergeUrl, sliceUpload.MergeEntry)
 	r.Run(":4396")
 }
